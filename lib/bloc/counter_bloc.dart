@@ -11,11 +11,9 @@ class CounterBloc extends Bloc<CounterEvent, int> {
 
   final snackBar1 = SnackBar(content: Text('0이하로는 떨어지지 않아요'));
   final snackBar2 = SnackBar(content: Text('5이상 오르지 않아요'));
+
   // 인풋으로 오는 이벤트를 결과값인 state로 매핑시키느 ㄴ메서드
-  /// Must be implemented when a class extends [Bloc].
   /// [mapEventToState] is called whenever an [event] is [add]ed
-  /// and is responsible for converting that [event] into a new [state].
-  /// [mapEventToState] can `yield` zero, one, or multiple states for an event.
   @override
   Stream<int> mapEventToState(CounterEvent event) async* {
     // stream so async* keyword.

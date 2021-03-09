@@ -5,7 +5,7 @@ import 'bloc/counter_bloc.dart';
 import 'bloc/counter_bloc.dart';
 import 'bloc/counter_event.dart';
 
-class MyHomePage extends StatelessWidget {
+class CounterScreen extends StatelessWidget {
   CounterBloc _counterBloc;
   @override
   Widget build(BuildContext context) {
@@ -18,26 +18,48 @@ class MyHomePage extends StatelessWidget {
         centerTitle: true,
         elevation: 0.0, // 앱바 밑부분의 테두리 높이로 이ㅣㄴ한 그림자없애줌 z축 0으로
       ),
-      floatingActionButton: Row(children: [
-        IconButton(
-            icon: Icon(Icons.add),
-            onPressed: () {
-              _counterBloc.add(CounterEvent.increment);
-            }),
-        IconButton(
-            icon: Icon(Icons.remove_circle_outline_sharp),
-            onPressed: () {
-              _counterBloc.add(CounterEvent.decrement);
-            }),
-        IconButton(
-          icon: Icon(Icons.person_rounded),
-          onPressed: () => {
-            Navigator.of(context).push(MaterialPageRoute(
-                builder: (_) => BlocProvider.value(
-                    value: BlocProvider.of<CounterBloc>(context),
-                    child: Snd())))
-          },
+      floatingActionButton:
+          Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+        Padding(
+          padding: const EdgeInsets.all(25.0),
+          child: IconButton(
+              icon: Icon(Icons.add),
+              color: Colors.redAccent,
+              highlightColor: Colors.deepPurple,
+              splashRadius: 70,
+              splashColor: Colors.blue,
+              iconSize: 50,
+              onPressed: () {
+                _counterBloc.add(CounterEvent.increment);
+              }),
         ),
+        Padding(
+          padding: const EdgeInsets.all(25.0),
+          child: IconButton(
+              icon: Icon(Icons.remove_circle_outline_sharp),
+              splashRadius: 70,
+              splashColor: Colors.blue,
+              color: Colors.blue,
+              highlightColor: Colors.brown,
+              iconSize: 50,
+              onPressed: () {
+                _counterBloc.add(CounterEvent.decrement);
+              }),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(25.0),
+          child: IconButton(
+            icon: Icon(Icons.person_rounded),
+            iconSize: 50,
+            color: Colors.grey,
+            onPressed: () => {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (_) => BlocProvider.value(
+                      value: BlocProvider.of<CounterBloc>(context),
+                      child: Snd())))
+            },
+          ),
+        )
       ]),
       body: Center(
         child: Column(
@@ -87,7 +109,7 @@ class Snd extends StatelessWidget {
             children: <Widget>[
               Center(
                 child: CircleAvatar(
-                  backgroundImage: AssetImage('assets/me.jpg'),
+                  backgroundImage: AssetImage('assets/또가스.jpg'),
                   radius: 60,
                   backgroundColor: Colors.amber[300],
                 ),

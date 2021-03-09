@@ -3,7 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'bloc/counter_event.dart';
 import 'bloc/counter_bloc.dart';
-import 'home.dart';
+import 'countScreen.dart';
+import 'mainScreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,10 +14,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: BlocProvider<CounterBloc>(
-        create: (context) => CounterBloc(),
-        child: MyHomePage(),
-      ),
-    );
+        home: MultiBlocProvider(
+      providers: [
+        BlocProvider<CounterBloc>(
+          create: (BuildContext context) => CounterBloc(),
+        ),
+      ],
+      child: MainScreen(),
+    ));
   }
 }
